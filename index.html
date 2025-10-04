@@ -25,6 +25,14 @@
             top: 0;
             z-index: 1000;
         }
+        header .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        header img {
+            height: 50px;
+        }
         header h1 {
             font-size: 1.8rem;
         }
@@ -133,7 +141,10 @@
 </head>
 <body>
     <header>
-        <h1>Galpon Oscar Kolbasiuk</h1>
+        <div class="logo-title">
+            <img src="img/logo.png" alt="Logo Galpon Oscar Kolbasiuk">
+            <h1>Galpon Oscar Kolbasiuk</h1>
+        </div>
         <nav>
             <ul class="menu" role="menubar" aria-label="Menú principal">
                 <li role="none">
