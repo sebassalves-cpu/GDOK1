@@ -5,73 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Galpones Oscar Kolbasiuk</title>
     <style>
-        /* Reset y estilos básicos */
+        /* Reset */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f9f9f9;
             color: #333;
             line-height: 1.6;
         }
-        
+
+        /* Encabezado */
         header {
             background-color: #2c3e50;
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        
-        header .title-container {
+
+        /* Contenedor superior del header */
+        .title-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            justify-content: space-between;
         }
-        
-        header h1 {
-            font-size: 1.8rem;
+
+        .title-center {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .title-center h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
             margin: 0;
         }
-        
-        nav {
-            margin-top: 0.5rem;
+
+        /* Logos */
+        .title-container img {
+            height: 90px;
+            width: auto;
         }
-        
-        /* Menú desplegable */
+
+        /* Menú */
+        nav {
+            margin-top: 0.6rem;
+        }
+
         .menu {
             list-style: none;
             display: flex;
             gap: 1rem;
-            position: relative;
             justify-content: center;
         }
-        
+
         .menu > li {
             position: relative;
         }
-        
+
         .menu > li > a {
             color: white;
             text-decoration: none;
             padding: 0.5rem 1rem;
             display: block;
-            cursor: pointer;
             font-weight: 600;
             transition: background-color 0.3s ease;
         }
-        
+
         .menu > li > a:hover,
         .menu > li > a:focus {
             background-color: #34495e;
             border-radius: 4px;
         }
-        
+
         /* Submenú */
         .submenu {
             display: none;
@@ -84,31 +96,24 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             z-index: 1000;
         }
-        
-        .submenu li {
-            list-style: none;
-        }
-        
+
         .submenu li a {
             color: white;
             padding: 0.5rem 1rem;
             display: block;
             text-decoration: none;
             font-weight: 500;
-            transition: background-color 0.3s ease;
         }
-        
-        .submenu li a:hover,
-        .submenu li a:focus {
+
+        .submenu li a:hover {
             background-color: #2c3e50;
         }
-        
-        /* Mostrar submenu al hover */
-        .menu > li:hover .submenu,
-        .menu > li:focus-within .submenu {
+
+        .menu > li:hover .submenu {
             display: block;
         }
-        
+
+        /* Contenido principal */
         main {
             max-width: 900px;
             margin: 2rem auto;
@@ -116,19 +121,18 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            min-height: 300px;
         }
-        
+
         main h2 {
             margin-bottom: 1rem;
             color: #2c3e50;
         }
-        
+
         main p {
             margin-bottom: 1rem;
             text-align: justify;
         }
-        
+
         footer {
             text-align: center;
             padding: 1rem;
@@ -136,35 +140,26 @@
             color: white;
             margin-top: 3rem;
         }
-        
-        /* Secciones ocultas */
+
         section {
             display: none;
         }
-        
+
         section.active {
             display: block;
         }
-        
+
         /* Responsive */
-        @media (max-width: 600px) {
-            header {
-                padding: 1rem;
-            }
-            
-            header .title-container {
+        @media (max-width: 700px) {
+            .title-container {
                 flex-direction: column;
-                text-align: center;
+                gap: 0.5rem;
             }
-            
+            .title-center h1 {
+                font-size: 1.5rem;
+            }
             .menu {
                 flex-direction: column;
-            }
-            
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
             }
         }
     </style>
@@ -172,28 +167,34 @@
 <body>
     <header>
         <div class="title-container">
-            <h1>Galpones Oscar Kolbasiuk</h1>
+            <!-- Logo izquierda -->
+            <img src="logook.png" alt="Logo OK">
+            
+            <!-- Título centrado -->
+            <div class="title-center">
+                <h1>Galpones Oscar Kolbasiuk</h1>
+            </div>
+            
+            <!-- Logo derecha -->
+            <img src="logolassie.png" alt="Logo Lassie">
         </div>
+
+        <!-- Menú de navegación -->
         <nav>
-            <ul class="menu" role="menubar" aria-label="Menú principal">
-                <li role="none">
-                    <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Sectores ▾</a>
-                    <ul class="submenu" role="menu" aria-label="Submenú Sectores">
-                        <li role="none"><a href="#" role="menuitem" tabindex="-1" data-section="inicio">Inicio</a></li>
-                        <li role="none"><a href="#" role="menuitem" tabindex="-1" data-section="herreria">Herrería</a></li>
-                        <li role="none"><a href="#" role="menuitem" tabindex="-1" data-section="torneria">Tornería</a></li>
-                        <li role="none"><a href="#" role="menuitem" tabindex="-1" data-section="gomeria">Gomería</a></li>
-                        <li role="none"><a href="#" role="menuitem" tabindex="-1" data-section="mecanica">Mecánica</a></li>
-                    </ul>
-                </li>
-                <li role="none"><a href="#" role="menuitem" tabindex="0" data-section="contacto">Contacto</a></li>
+            <ul class="menu">
+                <li><a href="#" data-section="inicio">Inicio</a></li>
+                <li><a href="#" data-section="herreria">Herrería</a></li>
+                <li><a href="#" data-section="torneria">Tornería</a></li>
+                <li><a href="#" data-section="gomeria">Gomería</a></li>
+                <li><a href="#" data-section="mecanica">Mecánica</a></li>
+                <li><a href="#" data-section="contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="inicio" class="active">
-            <h2>Inicio</h2>
+              <h2>Inicio</h2>
             <p>
                 Los “galpones de Oscar Kolbasiuk” pertenecen a Oscar Kolbasiuk S.A.S., ubicados a las afueras de la ciudad de Paysandú, en camino a San Félix, entre las calles Don Martín Etchebarne y Proyectada 86.
             </p>
@@ -218,68 +219,48 @@
 
         <section id="herreria">
             <h2>Herrería</h2>
-            <p>
-                El área de herrería se encarga de la fabricación, reparación y mantenimiento de estructuras metálicas y piezas necesarias para la operación de la empresa. Cuenta con personal especializado y maquinaria adecuada para trabajos de soldadura, corte y conformado de metales.
-            </p>
+            <p>Área encargada de la fabricación, reparación y mantenimiento de estructuras metálicas y piezas necesarias para la operación de la empresa.</p>
         </section>
 
         <section id="torneria">
             <h2>Tornería</h2>
-            <p>
-                La tornería realiza trabajos de mecanizado de precisión para la fabricación y reparación de piezas mecánicas. Dispone de tornos, fresadoras y herramientas CNC para garantizar la calidad y exactitud en cada proyecto.
-            </p>
+            <p>Realiza mecanizados de precisión y reparaciones de piezas con tornos, fresadoras y herramientas CNC.</p>
         </section>
 
         <section id="gomeria">
             <h2>Gomería</h2>
-            <p>
-                La gomería ofrece servicios de mantenimiento y reparación de neumáticos para la flota de vehículos y maquinaria de la empresa. Se asegura de mantener la seguridad y eficiencia en el transporte y operación de equipos.
-            </p>
+            <p>Ofrece servicios de mantenimiento y reparación de neumáticos para la flota y maquinaria de la empresa.</p>
         </section>
 
         <section id="mecanica">
             <h2>Mecánica</h2>
-            <p>
-                El área de mecánica se dedica al mantenimiento, reparación y puesta a punto de la maquinaria y vehículos de la empresa, asegurando su óptimo funcionamiento y prolongando su vida útil.
-            </p>
+            <p>Encargada del mantenimiento, reparación y puesta a punto de la maquinaria y vehículos de la empresa.</p>
         </section>
 
         <section id="contacto">
-            <h2>Contacto</h2>
+           <h2>Contacto</h2>
             <p><strong>Dirección:</strong> MW33+RJ8, Unnamed Road, 60000 San Félix, Departamento de Paysandú</p>
             <p><strong>Teléfono:</strong> +598 1234 5678 (Ejemplo)</p>
             <p><strong>Email:</strong> contacto@oskolbasiuk.com</p>
-            <p>Para más información o consultas, por favor utilice los datos de contacto o visite nuestras instalaciones.</p>
-
             <h3>Ubicación</h3>
-            <!-- Imagen de ubicación -->
             <img src="ubicacion.jpg" alt="Mapa de ubicación Galpones Oscar Kolbasiuk" style="max-width:100%; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2)">
+        </section>
         </section>
     </main>
 
     <footer>
-        <p>© 2024 Galpones Oscar Kolbasiuk S.A.S. Todos los derechos reservados.</p>
+        <p>© 2025 Galpones Oscar Kolbasiuk S.A.S. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Función para mostrar solo la sección seleccionada
-        function mostrarSeccion(id) {
-            const secciones = document.querySelectorAll('main section');
-            secciones.forEach(sec => {
-                if (sec.id === id) {
-                    sec.classList.add('active');
-                } else {
-                    sec.classList.remove('active');
-                }
-            });
-        }
-
-        // Capturar clicks en enlaces del menú que tienen data-section
+        // Control de secciones visibles
         document.querySelectorAll('a[data-section]').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
                 const id = link.getAttribute('data-section');
-                mostrarSeccion(id);
+                document.querySelectorAll('main section').forEach(sec => {
+                    sec.classList.toggle('active', sec.id === id);
+                });
             });
         });
     </script>
