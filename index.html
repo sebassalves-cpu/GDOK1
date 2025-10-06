@@ -34,6 +34,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 1rem;
         }
 
         .title-center {
@@ -45,12 +46,21 @@
             font-size: 1.9rem;
             font-weight: 700;
             margin: 0;
+            font-style: italic; /* Estilo cursiva mantenido */
+            color: #a69cac; /* Color morado grisáceo solicitado */
+            text-shadow: 
+                1px 1px 0 #8b7d9a,    /* Sombra interna 1 */
+                2px 2px 0 #8b7d9a,    /* Sombra interna 2 */
+                3px 3px 0 rgba(0,0,0,0.2), /* Sombra externa para profundidad 3D */
+                0 0 5px rgba(166, 156, 172, 0.5); /* Brillo sutil para efecto 3D */
         }
 
         /* Logos */
         .title-container img {
             height: 90px;
             width: auto;
+            border-radius: 4px;
+            transition: height 0.3s ease;
         }
 
         /* Menú */
@@ -75,42 +85,14 @@
             padding: 0.5rem 1rem;
             display: block;
             font-weight: 600;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border-radius: 4px;
         }
 
         .menu > li > a:hover,
         .menu > li > a:focus {
             background-color: #34495e;
-            border-radius: 4px;
-        }
-
-        /* Submenú */
-        .submenu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #34495e;
-            min-width: 180px;
-            border-radius: 0 0 6px 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-
-        .submenu li a {
-            color: white;
-            padding: 0.5rem 1rem;
-            display: block;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .submenu li a:hover {
-            background-color: #2c3e50;
-        }
-
-        .menu > li:hover .submenu {
-            display: block;
+            transform: translateY(-1px);
         }
 
         /* Contenido principal */
@@ -126,11 +108,35 @@
         main h2 {
             margin-bottom: 1rem;
             color: #2c3e50;
+            font-size: 1.8rem;
+        }
+
+        main h3 {
+            margin: 1.5rem 0 1rem 0;
+            color: #34495e;
+            font-size: 1.4rem;
         }
 
         main p {
             margin-bottom: 1rem;
             text-align: justify;
+        }
+
+        main ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        main ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        main img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            margin-top: 1rem;
         }
 
         footer {
@@ -151,15 +157,44 @@
 
         /* Responsive */
         @media (max-width: 700px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+            
             .title-container {
                 flex-direction: column;
                 gap: 0.5rem;
+                text-align: center;
             }
+            
             .title-center h1 {
                 font-size: 1.5rem;
             }
+            
+            .title-container img {
+                height: 60px; /* Logos más pequeños en móviles */
+            }
+            
             .menu {
                 flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .menu > li > a {
+                text-align: center;
+                padding: 0.8rem;
+            }
+            
+            main {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            /* Reducir efecto 3D en móviles para rendimiento */
+            .title-center h1 {
+                text-shadow: 
+                    1px 1px 0 #8b7d9a,
+                    2px 2px 0 rgba(0,0,0,0.2);
             }
         }
     </style>
@@ -168,7 +203,7 @@
     <header>
         <div class="title-container">
             <!-- Logo izquierda -->
-            <img src="logook.png" alt="Logo OK">
+            <img src="logook.png" alt="Logo de Galpones Oscar Kolbasiuk">
             
             <!-- Título centrado -->
             <div class="title-center">
@@ -176,25 +211,25 @@
             </div>
             
             <!-- Logo derecha -->
-            <img src="logolassie.png" alt="Logo Lassie">
+            <img src="logolassie.png" alt="Logo asociado Lassie">
         </div>
 
         <!-- Menú de navegación -->
         <nav>
-            <ul class="menu">
-                <li><a href="#" data-section="inicio">Inicio</a></li>
-                <li><a href="#" data-section="herreria">Herrería</a></li>
-                <li><a href="#" data-section="torneria">Tornería</a></li>
-                <li><a href="#" data-section="gomeria">Gomería</a></li>
-                <li><a href="#" data-section="mecanica">Mecánica</a></li>
-                <li><a href="#" data-section="contacto">Contacto</a></li>
+            <ul class="menu" role="menubar" aria-label="Menú principal">
+                <li role="none"><a href="#" role="menuitem" data-section="inicio">Inicio</a></li>
+                <li role="none"><a href="#" role="menuitem" data-section="herreria">Herrería</a></li>
+                <li role="none"><a href="#" role="menuitem" data-section="torneria">Tornería</a></li>
+                <li role="none"><a href="#" role="menuitem" data-section="gomeria">Gomería</a></li>
+                <li role="none"><a href="#" role="menuitem" data-section="mecanica">Mecánica</a></li>
+                <li role="none"><a href="#" role="menuitem" data-section="contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="inicio" class="active">
-              <h2>Inicio</h2>
+            <h2>Inicio</h2>
             <p>
                 Los “galpones de Oscar Kolbasiuk” pertenecen a Oscar Kolbasiuk S.A.S., ubicados a las afueras de la ciudad de Paysandú, en camino a San Félix, entre las calles Don Martín Etchebarne y Proyectada 86.
             </p>
@@ -238,13 +273,13 @@
         </section>
 
         <section id="contacto">
-           <h2>Contacto</h2>
+            <h2>Contacto</h2>
             <p><strong>Dirección:</strong> MW33+RJ8, Unnamed Road, 60000 San Félix, Departamento de Paysandú</p>
-            <p><strong>Teléfono:</strong> +598 1234 5678 (Ejemplo)</p>
+            <p><strong>Teléfono:</strong> 47248304</p>
             <p><strong>Email:</strong> contacto@oskolbasiuk.com</p>
+            <p><strong>Página principal:</strong> <a href="https://www.kolbasiuk.com.uy" target="_blank" style="color: #2c3e50; text-decoration: underline;">https://www.kolbasiuk.com.uy</a></p>
             <h3>Ubicación</h3>
-            <img src="ubicacion.jpg" alt="Mapa de ubicación Galpones Oscar Kolbasiuk" style="max-width:100%; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2)">
-        </section>
+            <img src="ubicacion.jpg" alt="Mapa de ubicación Galpones Oscar Kolbasiuk">
         </section>
     </main>
 
